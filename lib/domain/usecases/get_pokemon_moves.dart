@@ -6,7 +6,9 @@ class GetPokemonMoves {
 
   const GetPokemonMoves(this.repository);
 
-  Future<List<PokemonMove>> call({required String pokemonName}) async {
+  Future<List<PokemonMove>> call({
+    required String pokemonName,
+  }) async {
     return await repository.getPokemonMoves(pokemonName);
   }
 }

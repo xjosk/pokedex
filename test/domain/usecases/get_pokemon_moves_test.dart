@@ -18,14 +18,14 @@ void main() {
   const pokemonName = 'bulbasur';
   final pokemonMoves = List.generate(
     3,
-    (index) => const PokemonMove(
+    (index) => PokemonMove(
       name: 'cut',
-      learnedAtLevel: 24,
+      levelLearnedAt: 24,
     ),
   );
 
   test(
-    'should get moves from pokemon (3)',
+    'should get moves (3) from pokemon from repository',
     () async {
       when(() => mockPokemonRepository.getPokemonMoves(any()))
           .thenAnswer((_) async => pokemonMoves);

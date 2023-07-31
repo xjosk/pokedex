@@ -1,17 +1,20 @@
 import 'package:equatable/equatable.dart';
+import 'package:pokedex/core/extensions/string_extension.dart';
 
 class PokemonMove extends Equatable {
-  final String name;
-  final int learnedAtLevel;
+  late final String name;
+  final int levelLearnedAt;
 
-  const PokemonMove({
-    required this.name,
-    required this.learnedAtLevel,
-  });
+  PokemonMove({
+    required String name,
+    required this.levelLearnedAt,
+  }) {
+    this.name = name.capitalizeFirstWord;
+  }
 
   @override
   List<Object?> get props => [
-    name,
-    learnedAtLevel,
-  ];
+        name,
+        levelLearnedAt,
+      ];
 }

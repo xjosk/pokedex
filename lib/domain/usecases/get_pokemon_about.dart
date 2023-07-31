@@ -6,9 +6,13 @@ class GetPokemonAbout {
 
   const GetPokemonAbout(this.repository);
 
-  Future<PokemonAbout> call({
+  Future<PokemonAbout?> call({
     required String pokemonName,
   }) async {
-    return repository.getPokemonAbout(pokemonName);
+    var pokemonAboutSpecies =
+        await repository.getPokemonAboutSpecies(pokemonName);
+    pokemonAboutSpecies ??= {};
+    return repository.getPokemonAbout(
+        pokemonAboutSpecies: pokemonAboutSpecies, pokemonName: pokemonName);
   }
 }

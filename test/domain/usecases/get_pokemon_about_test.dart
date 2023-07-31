@@ -16,30 +16,34 @@ void main() {
   });
 
   const pokemonName = 'bulbasur';
-  const pokemonAbout = PokemonAbout(
+  final pokemonAbout = PokemonAbout(
     species: 'a',
-    height: 'a',
-    weight: 'a',
-    abilites: <String>[
+    height: 7,
+    weight: 89,
+    abilites: const <String>[
       'a',
       'a',
     ],
-    gender: 'a',
-    eggGroup: 'a',
-    eggCycle: 'a',
+    femaleGenderRate: 1,
+    eggGroups: const <String>[
+      'a',
+      'a',
+    ],
+    eggCycle: 1,
   );
 
   test(
-    'should get information about a specific pokemon',
+    'should get information about a specific pokemon from repository',
     () async {
-      when(() => mockPokemonRepository.getPokemonAbout(any()))
-          .thenAnswer((_) async => pokemonAbout);
+      when(() => mockPokemonRepository.getPokemonAbout(
+          pokemonAboutSpecies: {},
+          pokemonName: pokemonName)).thenAnswer((_) async => pokemonAbout);
 
       final result = await usecase.call(pokemonName: pokemonName);
 
       expect(result, pokemonAbout);
-      verify(() => mockPokemonRepository.getPokemonAbout(pokemonName));
-      verifyNoMoreInteractions(mockPokemonRepository);
+      verify(() => mockPokemonRepository
+          .getPokemonAbout(pokemonAboutSpecies: {}, pokemonName: pokemonName)).called(1);
     },
   );
 }

@@ -18,14 +18,15 @@ void main() {
   const offset = 10;
   final List<PokemonPreview> pokemonPreviews = List.generate(
     10,
-    (index) => const PokemonPreview(
+    (index) => PokemonPreview(
       name: 'bulbasur',
-      types: <PokemonType>[],
+      types: const <PokemonType>[],
+      spriteUrl: 'http...'
     ),
   );
 
   test(
-    'should get 10 pokemon previews from repository',
+    'should get (10) pokemon previews from repository',
     () async {
       when(() => mockPokemonRepository.getPokemon(any()))
           .thenAnswer((_) async => pokemonPreviews);
@@ -33,8 +34,7 @@ void main() {
       final result = await usecase.call(offset: offset);
 
       expect(result, pokemonPreviews);
-      verify(() => mockPokemonRepository.getPokemon(offset));
-      verifyNoMoreInteractions(mockPokemonRepository);
+      verify(() => mockPokemonRepository.getPokemonFromUrls(offset)).called(1);
     },
   );
 }

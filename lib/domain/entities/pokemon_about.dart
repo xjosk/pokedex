@@ -1,32 +1,39 @@
 import 'package:equatable/equatable.dart';
+import 'package:pokedex/core/extensions/string_extension.dart';
 
 class PokemonAbout extends Equatable {
   final String species;
-  final String height;
-  final String weight;
-  final List<String> abilites;
-  final String gender;
-  final String eggGroup;
-  final String eggCycle;
+  late final double height;
+  late final double weight;
+  late final List<String> abilites;
+  late final double femaleGenderRate;
+  late final List<String> eggGroups;
+  final int eggCycle;
 
-  const PokemonAbout({
+  PokemonAbout({
     required this.species,
-    required this.height,
-    required this.weight,
-    required this.abilites,
-    required this.gender,
-    required this.eggGroup,
+    required int height,
+    required int weight,
+    required List<String> abilites,
+    required int femaleGenderRate,
+    required List<String> eggGroups,
     required this.eggCycle,
-  });
+  }) {
+    this.height = height * 10;
+    this.weight = weight / 10;
+    this.femaleGenderRate = femaleGenderRate / 8;
+    this.abilites = abilites.map((e) => e.capitalizeFirstWord).toList();
+    this.eggGroups = eggGroups.map((e) => e.capitalizeFirstWord).toList();
+  }
 
   @override
   List<Object?> get props => [
-    species,
-    height,
-    weight,
-    abilites,
-    gender,
-    eggGroup,
-    eggCycle,
-  ];
+        species,
+        height,
+        weight,
+        abilites,
+        femaleGenderRate,
+        eggGroups,
+        eggCycle,
+      ];
 }

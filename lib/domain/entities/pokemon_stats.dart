@@ -4,8 +4,8 @@ class PokemonStats extends Equatable {
   final int hp;
   final int attack;
   final int defense;
-  final int speedAttack;
-  final int speedDefense;
+  final int specialAttack;
+  final int specialDefense;
   final int speed;
   late final int total;
 
@@ -13,11 +13,11 @@ class PokemonStats extends Equatable {
     required this.hp,
     required this.attack,
     required this.defense,
-    required this.speedAttack,
-    required this.speedDefense,
+    required this.specialAttack,
+    required this.specialDefense,
     required this.speed,
   }) {
-    total = hp + attack + defense + speedAttack + speedDefense + speed;
+    total = hp + attack + defense + specialAttack + specialDefense + speed;
   }
 
   @override
@@ -25,8 +25,8 @@ class PokemonStats extends Equatable {
         hp,
         attack,
         defense,
-        speedAttack,
-        speedDefense,
+        specialAttack,
+        specialDefense,
         speed,
         total,
       ];

@@ -6,9 +6,11 @@ class GetPokemon {
 
   const GetPokemon(this.repository);
 
-  Future<List<PokemonPreview>> call({
+  Future<List<PokemonPreview?>> call({
     required int offset,
   }) async {
-    return await repository.getPokemon(offset);
+    var pokemonUrls = await repository.getPokemonFromUrls(offset);
+    pokemonUrls ??= [];
+    return await repository.getPokemon(pokemonUrls);
   }
 }

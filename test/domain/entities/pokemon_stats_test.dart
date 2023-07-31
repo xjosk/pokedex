@@ -8,8 +8,8 @@ void main() {
     hp: 1,
     attack: 1,
     defense: 1,
-    speedAttack: 1,
-    speedDefense: 1,
+    specialAttack: 1,
+    specialDefense: 1,
     speed: 1,
   );
 
