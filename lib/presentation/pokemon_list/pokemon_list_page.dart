@@ -221,7 +221,7 @@ class _PokemonListPageState extends ConsumerState<PokemonListPage> {
                                                   ),
                                                   ...pokemonPreview.types.map(
                                                     (e) => Container(
-                                                      width: 60,
+                                                      width: 70,
                                                       padding:
                                                           const EdgeInsets.all(
                                                               5.0),
